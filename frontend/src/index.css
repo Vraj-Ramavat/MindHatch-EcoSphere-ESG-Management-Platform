@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-g-blue: var(--g-blue);
+  --color-g-green: var(--g-green);
+  --color-g-yellow: var(--g-yellow);
+  --color-g-red: var(--g-red);
+  --color-g-purple: var(--g-purple);
+  --color-g-teal: var(--g-teal);
+  --color-g-surface: var(--g-surface);
+  --color-g-search: var(--g-search);
+  --color-g-active: var(--g-active);
+  --font-sans: "Google Sans", "Product Sans", "Roboto", system-ui, sans-serif;
+}
+
+:root {
+  /* Google palette colors */
+  --g-blue: #1A73E8;
+  --g-green: #1E8E3E;
+  --g-yellow: #F9AB00;
+  --g-red: #D93025;
+  --g-purple: #A142F4;
+  --g-teal: #24C1E0;
+  --g-surface: #F8F9FA;
+  --g-search: #F1F3F4;
+  --g-active: #E8F0FE;
+
+  --background: var(--g-surface);
+  --foreground: #202124;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --primary: var(--g-blue);
+  --primary-foreground: #ffffff;
+  --muted: var(--g-surface);
+  --muted-foreground: #5F6368;
+  --accent: var(--g-active);
+  --accent-foreground: var(--g-blue);
+  --destructive: var(--g-red);
+  --destructive-foreground: #ffffff;
+  --border: #DADCE0;
+  --input: #DADCE0;
+  --ring: var(--g-blue);
+
+  /* ── Semantic contrast tokens (light mode) ── */
+  --badge-active-bg: rgba(16, 185, 129, 0.18);
+  --badge-active-text: #065f46;
+  --badge-active-border: rgba(16, 185, 129, 0.4);
+  --badge-inactive-bg: rgba(100, 116, 139, 0.18);
+  --badge-inactive-text: #1f2937;
+  --badge-inactive-border: rgba(100, 116, 139, 0.3);
+  --badge-warning-bg: rgba(245, 158, 11, 0.18);
+  --badge-warning-text: #78350f;
+  --badge-warning-border: rgba(245, 158, 11, 0.35);
+  --badge-danger-bg: rgba(244, 63, 94, 0.18);
+  --badge-danger-text: #881337;
+  --badge-danger-border: rgba(244, 63, 94, 0.35);
+  --badge-info-bg: rgba(59, 130, 246, 0.18);
+  --badge-info-text: #1e3a8a;
+  --badge-info-border: rgba(59, 130, 246, 0.35);
+  /* Scope colors */
+  --scope1-text: #9f1239;  --scope1-bg: rgba(244, 63, 94, 0.15);
+  --scope2-text: #1e3a8a;  --scope2-bg: rgba(59, 130, 246, 0.15);
+  --scope3-text: #5b21b6;  --scope3-bg: rgba(139, 92, 246, 0.15);
+  /* Source type colors */
+  --src-purchase: #1e3a8a;  --src-manufacturing: #5b21b6;
+  --src-expense: #78350f;   --src-fleet: #881337;
+  --src-manual: #065f46;
+  /* Data value color */
+  --value-text: #064e3b;
+
+  /* Core layout variables mapping */
+  --bg-primary: var(--g-surface);
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: var(--g-surface);
+  --bg-elevated: #ffffff;
+
+  /* Accent — Google Blue */
+  --accent-light: var(--g-active);
+  --accent-dark: #1557b0;
+  --accent-glow: var(--g-active);
+
+  /* Secondary accents */
+  --blue: var(--g-blue);
+  --purple: var(--g-purple);
+  --amber: var(--g-yellow);
+  --rose: var(--g-red);
+  --cyan: var(--g-teal);
+
+  /* Text colors */
+  --text-primary: #202124;
+  --text-secondary: #5F6368;
+  --text-muted: #70757a;
+
+  /* Borders & Shadows */
+  --border: #DADCE0;
+  --border-hover: #BDC1C6;
+
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  --shadow-md: 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --shadow-lg: 0 4px 16px 0 rgba(60, 64, 67, 0.15);
+  --shadow-glow: 0 0 0 3px var(--g-active);
+
+  /* Radius (Google Standard) */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Form element font reset */
+  input, button, select, textarea {
+    font-family: inherit;
+  }
+
+  /* Recharts label reset to sans-serif and adaptive theme color */
+  svg text {
+    font-family: var(--font-sans) !important;
+    fill: var(--text-primary) !important;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* ========================================
+   Card
+   ======================================== */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.glass-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--rose), #e11d48);
+  color: white;
+}
+.btn-danger:hover { box-shadow: 0 4px 16px rgba(244, 63, 94, 0.3); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+}
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
+
+.btn-sm { padding: 6px 14px; font-size: 13px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; }
+
+/* ========================================
+   Form Inputs
+   ======================================== */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.form-input::placeholder { color: var(--text-muted); }
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* ========================================
+   Table
+   ======================================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+.data-table tr {
+  transition: background 0.15s ease;
+}
+.data-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+/* ========================================
+   Status Badges
+   ======================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-active   { background: var(--badge-active-bg);   color: var(--badge-active-text);   border: 1px solid var(--badge-active-border); }
+.badge-inactive { background: var(--badge-inactive-bg); color: var(--badge-inactive-text); border: 1px solid var(--badge-inactive-border); }
+.badge-warning  { background: var(--badge-warning-bg);  color: var(--badge-warning-text);  border: 1px solid var(--badge-warning-border); }
+.badge-danger   { background: var(--badge-danger-bg);   color: var(--badge-danger-text);   border: 1px solid var(--badge-danger-border); }
+.badge-info     { background: var(--badge-info-bg);     color: var(--badge-info-text);     border: 1px solid var(--badge-info-border); }
+
+.stats-grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* ========================================
+   Stat Cards
+   ======================================== */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.stat-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.stat-card.emerald::before { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+.stat-card.blue::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+.stat-card.purple::before { background: linear-gradient(90deg, var(--purple), #a78bfa); }
+.stat-card.amber::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.stat-card.rose::before { background: linear-gradient(90deg, var(--rose), #fb7185); }
+.stat-card.cyan::before { background: linear-gradient(90deg, var(--cyan), #22d3ee); }
+
+/* ========================================
+   Modal / Dialog
+   ======================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+.modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  min-width: 440px;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-elevated) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   Toast Notifications
+   ======================================== */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 200;
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  box-shadow: var(--shadow-lg);
+}
+.toast-success { background: var(--accent-dark); color: white; }
+.toast-error { background: #e11d48; color: white; }
+.toast-info { background: var(--blue); color: white; }
+@keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { to { opacity: 0; transform: translateY(-10px); } }
+
+/* ========================================
+   Dark Mode variables
+   ======================================== */
+.dark {
+  /* Google palette colors overridden for dark mode */
+  --g-blue: #10B981;      /* Emerald Green instead of blue for primary neon accents */
+  --g-green: #34D399;     /* Light Emerald */
+  --g-yellow: #FBBF24;    /* Amber */
+  --g-red: #F87171;       /* Light red */
+  --g-purple: #C084FC;    /* Purple */
+  --g-teal: #22D3EE;      /* Cyan */
+  --g-surface: #0B0F19;   /* Deep obsidian background */
+  --g-search: #1E293B;    /* Slate-800 search box */
+  --g-active: rgba(16, 185, 129, 0.15); /* glowing active green background */
+
+  --background: var(--g-surface);
+  --foreground: #F8FAFC;
+  --card: #151E2E;        /* Dark slate card */
+  --card-foreground: var(--foreground);
+  --primary: var(--g-blue);
+  --primary-foreground: #0B0F19;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: var(--g-active);
+  --accent-foreground: #34D399;
+  --destructive: var(--g-red);
+  --destructive-foreground: #ffffff;
+  --border: #1E293B;      /* Slate-800 border */
+  --input: #1E293B;
+  --ring: var(--g-blue);
+
+  /* Core layout variables mapping */
+  --bg-primary: var(--g-surface);
+  --bg-secondary: #151E2E;
+  --bg-card: #151E2E;
+  --bg-card-hover: #1E293B;
+  --bg-elevated: #1E293B;
+
+  /* Accent - Neon Green/Emerald */
+  --accent-light: #34D399;
+  --accent-dark: #059669;
+  --accent-glow: rgba(52, 211, 153, 0.1);
+
+  /* Secondary accents */
+  --blue: #38BDF8;        /* Sky blue in dark mode */
+  --purple: var(--g-purple);
+  --amber: var(--g-yellow);
+  --rose: var(--g-red);
+  --cyan: var(--g-teal);
+
+  /* Text colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Borders & Shadows */
+  --border: #1E293B;
+  --border-hover: #334155;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 12px rgba(16, 185, 129, 0.25);
+
+  /* ── Semantic contrast tokens (dark mode) ── */
+  --badge-active-bg: rgba(52, 211, 153, 0.2);
+  --badge-active-text: #6ee7b7;
+  --badge-active-border: rgba(52, 211, 153, 0.4);
+  --badge-inactive-bg: rgba(148, 163, 184, 0.2);
+  --badge-inactive-text: #e2e8f0;
+  --badge-inactive-border: rgba(148, 163, 184, 0.3);
+  --badge-warning-bg: rgba(251, 191, 36, 0.2);
+  --badge-warning-text: #fde68a;
+  --badge-warning-border: rgba(251, 191, 36, 0.35);
+  --badge-danger-bg: rgba(248, 113, 113, 0.2);
+  --badge-danger-text: #fca5a5;
+  --badge-danger-border: rgba(248, 113, 113, 0.35);
+  --badge-info-bg: rgba(96, 165, 250, 0.2);
+  --badge-info-text: #bfdbfe;
+  --badge-info-border: rgba(96, 165, 250, 0.35);
+  /* Scope colors (bright for dark bg) */
+  --scope1-text: #fca5a5;  --scope1-bg: rgba(248, 113, 113, 0.2);
+  --scope2-text: #93c5fd;  --scope2-bg: rgba(96, 165, 250, 0.2);
+  --scope3-text: #c4b5fd;  --scope3-bg: rgba(167, 139, 250, 0.2);
+  /* Source type colors (brighter for dark) */
+  --src-purchase: #93c5fd;  --src-manufacturing: #c4b5fd;
+  --src-expense: #fde68a;   --src-fleet: #fca5a5;
+  --src-manual: #6ee7b7;
+  /* Data value color */
+  --value-text: #6ee7b7;
+}
