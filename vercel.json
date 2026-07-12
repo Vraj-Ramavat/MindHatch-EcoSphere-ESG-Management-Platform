@@ -19,20 +19,12 @@
       "destination": "/backend/ecosphere/wsgi.py"
     },
     {
-      "source": "/admin/(.*)",
-      "destination": "/backend/ecosphere/wsgi.py"
-    },
-    {
-      "source": "/static/(.*)",
-      "destination": "/backend/ecosphere/wsgi.py"
-    },
-    {
-      "source": "/media/(.*)",
-      "destination": "/backend/ecosphere/wsgi.py"
+      "source": "/(assets/.*|.*\\.(svg|ico|png|jpg|jpeg|gif|css|js))",
+      "destination": "/frontend/$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/frontend/dist/index.html"
+      "destination": "/frontend/index.html"
     }
   ]
 }
