@@ -1,28 +1,38 @@
 {
-    "services": {
-        "frontend": {
-            "root": "frontend",
-            "framework": "vite"
-        },
-        "backend": {
-            "root": "backend",
-            "entrypoint": "ecosphere/wsgi.py"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/ecosphere/wsgi.py",
+      "use": "@vercel/python"
     },
-    "rewrites": [
-        {
-            "source": "/api(/.*)?",
-            "destination": {
-                "type": "service",
-                "service": "backend"
-            }
-        },
-        {
-            "source": "/(.*)",
-            "destination": {
-                "type": "service",
-                "service": "frontend"
-            }
-        }
-    ]
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/ecosphere/wsgi.py"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/backend/ecosphere/wsgi.py"
+    },
+    {
+      "source": "/static/(.*)",
+      "destination": "/backend/ecosphere/wsgi.py"
+    },
+    {
+      "source": "/media/(.*)",
+      "destination": "/backend/ecosphere/wsgi.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/dist/index.html"
+    }
+  ]
 }
