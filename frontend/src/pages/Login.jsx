@@ -192,9 +192,9 @@ export default function Login() {
           <div className="mt-6 p-4 rounded-xl border border-slate-100 bg-slate-50/50">
             <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">DEMO CREDENTIALS</p>
             <div className="space-y-1.5 text-xs text-slate-600">
-              <p><span className="font-semibold text-emerald-600">Admin:</span> admin / EcoSphere2026!</p>
-              <p><span className="font-semibold text-sky-600">Dept Head:</span> sarah.chen / EcoSphere2026!</p>
-              <p><span className="font-semibold text-purple-600">Employee:</span> james.wilson / EcoSphere2026!</p>
+              <p><span className="font-semibold text-emerald-600">Admin:</span> admin / admin123</p>
+              <p><span className="font-semibold text-sky-600">Dept Head:</span> dept_head / dept123</p>
+              <p><span className="font-semibold text-purple-600">Employee:</span> employee1 / emp123</p>
             </div>
           </div>
         </div>
